@@ -39,7 +39,7 @@ jobs:
             - name: Build
               id: build
               run: |
-                  echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+                  echo "tag=${{ inputs.tags }}" >> $GITHUB_OUTPUT
                   echo "status=${{ inputs.build-status }}" >> $GITHUB_OUTPUT
     deploy:
         runs-on: ubuntu-latest
