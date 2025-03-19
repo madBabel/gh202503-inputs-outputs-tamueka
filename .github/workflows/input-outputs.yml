@@ -44,12 +44,23 @@ jobs:
           echo "status=${{ inputs.build-status }}" >> $GITHUB_OUTPUT
           echo "tag=${{ inputs.tags }}" >> $GITHUB_OUTPUT
 
+      - name: Debug outputs
+        run: |
+          echo "Build Status: ${{ inputs.build-status }}"
+          echo "Tag: ${{ inputs.tags }}"
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: needs.build.outputs.status == 'success' && inputs.dry-run == 'false'
+    if: ${{ needs.build.outputs.status == 'success' && inputs.dry-run == false }}
     environment: ${{ inputs.target }}
     steps:
+      - name: Debug Inputs and Outputs
+        run: |
+          echo "Build Output Status: ${{ needs.build.outputs.status }}"
+          echo "Build Output Tag: ${{ needs.build.outputs.tag }}"
+          echo "Input Dry Run: ${{ inputs.dry-run }}"
+
       - name: Deploy
         run: |
           echo "Deploying to '${{ inputs.target }}' using tag '${{ needs.build.outputs.tag }}'"
