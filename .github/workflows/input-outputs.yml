@@ -34,7 +34,7 @@ jobs:
         steps:
             - name: Print GITHUB_OUTPUT path
               run: 
-                echo "GITHUB_OUTPUT path: $GITHUB_OUTPUT"
+                  echo "GITHUB_OUTPUT path: $GITHUB_OUTPUT"
 
             - name: Build
               id: build
