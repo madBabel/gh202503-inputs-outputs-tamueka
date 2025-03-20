@@ -5,7 +5,6 @@ on:
     inputs:
       dry-run: 
         type: boolean
-        default: false
         description: 'Skip deployment and only print build output'
       target: 
         type: string
