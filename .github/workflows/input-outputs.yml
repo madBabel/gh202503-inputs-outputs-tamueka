@@ -52,7 +52,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ inputs.build-status == 'success' && inputs.dry-run == 'false' }}
+    if: ${{ inputs.build-status == 'success' && inputs.dry-run == false }}
     environment: ${{ inputs.target }}
     steps:
       - name: Debug Inputs and Outputs
